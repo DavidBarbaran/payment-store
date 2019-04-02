@@ -32,4 +32,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
     implementation 'com.airbnb.android:lottie:3.0.0'
+    implementation 'org.koin:koin-androidx-scope:1.0.2'
 }

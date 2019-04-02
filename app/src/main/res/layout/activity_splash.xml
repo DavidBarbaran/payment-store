@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueDark"
-    tools:context=".SplashActivity">
+    tools:context=".feature.splash.SplashActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
@@ -21,7 +20,20 @@
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/isometric_mall" />
 
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/spacing36"
+        android:layout_marginEnd="@dimen/spacing36"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/logoText"
         style="@style/LogoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
