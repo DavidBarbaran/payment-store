@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".feature.login.LoginActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -11,7 +12,7 @@
         style="@style/LogoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/spacing32"
         android:text="@string/app_name"
         android:transitionName="@string/transition_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,12 +22,99 @@
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="0dp"
+        android:contentDescription="@null"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/spacing32"
         android:transitionName="@string/transition_logo"
         app:layout_constraintDimensionRatio="H,2:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoText" />
 
+    <LinearLayout
+        android:id="@+id/welcomeLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonsLinear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage">
+
+        <TextView
+            style="@style/TextMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/welcome" />
+
+        <TextView
+            style="@style/TextSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing8"
+            android:gravity="center"
+            android:text="@string/body_login" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonsLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/termsLinear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeLinear">
+
+        <david.barbaran.mallwallet.component.CenterIconButton
+            android:id="@+id/googleSignInButton"
+            style="@style/ButtonGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing36"
+            android:layout_marginEnd="@dimen/spacing36"
+            android:layout_marginBottom="@dimen/spacing20"
+            android:drawableStart="@drawable/ic_google_logo"
+            android:text="@string/sign_in_google" />
+
+        <david.barbaran.mallwallet.component.CenterIconButton
+            android:id="@+id/facebookSignInButton"
+            style="@style/ButtonFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing36"
+            android:layout_marginEnd="@dimen/spacing36"
+            android:layout_marginBottom="@dimen/spacing20"
+            android:drawableStart="@drawable/ic_facebook_logo"
+            android:text="@string/sign_in_facebook" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/termsLinear"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:background="@drawable/circle_shape"
+        android:rotation="180"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            style="@style/TextSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:textColor="@android:color/black"
+            android:text="@string/terms"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
