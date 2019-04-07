@@ -8,6 +8,7 @@
         <item name="android:windowBackground">@color/blueDark</item>
         <item name="android:statusBarColor">@color/blueDark</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
     </style>
 
     <style name="LogoText">

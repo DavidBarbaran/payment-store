@@ -9,12 +9,12 @@ import android.util.AttributeSet
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.Nullable
-import androidx.appcompat.widget.AppCompatButton
 import androidx.core.graphics.drawable.DrawableCompat
+import br.com.simplepass.loadingbutton.customViews.CircularProgressButton
 import david.barbaran.mallwallet.R
 import java.util.*
 
-class CenterIconButton : AppCompatButton {
+class CenterIconButton : CircularProgressButton {
 
     companion object {
         private const val DELIMITERS = "\n"
@@ -104,7 +104,7 @@ class CenterIconButton : AppCompatButton {
         updatePadding()
     }
 
-    override fun setText(text: CharSequence, type: BufferType) {
+    override fun setText(text: CharSequence?, type: BufferType) {
         super.setText(text, type)
         updatePadding()
     }

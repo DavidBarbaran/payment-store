@@ -26,7 +26,7 @@ class BounceAnimation(context: Context) {
 
         fun amplitude(amplitude: Double) = apply { this.amplitude = amplitude }
 
-        fun frequency(frequency: Double) = apply { this.frequency = amplitude }
+        fun frequency(frequency: Double) = apply { this.frequency = frequency }
 
         fun startOffset(startOffset: Long) = apply { this.startOffset = startOffset }
 

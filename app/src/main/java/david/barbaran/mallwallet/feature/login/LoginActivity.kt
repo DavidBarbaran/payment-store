@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import david.barbaran.mallwallet.R
 import david.barbaran.mallwallet.animation.BounceAnimation
+import david.barbaran.mallwallet.animation.moveViewToScreenCenter
+import david.barbaran.mallwallet.animation.shrinkAnimation
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -18,12 +20,21 @@ class LoginActivity : AppCompatActivity(), LoginController.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         presenter.getAndProcessImage(intent)
+        initView()
+    }
+
+    private fun initView() {
+        googleSignInButton.setOnClickListener {
+            loadView.visibility = View.VISIBLE
+            facebookSignInButton.visibility = View.INVISIBLE
+            googleSignInButton.startAnimation {
+                moveViewToScreenCenter(windowManager, container, googleSignInButton) { shrinkAnimation(it) }
+            }
+        }
     }
 
     override fun onEnterAnimationComplete() {
-        super.onEnterAnimationComplete()
         presenter.evaluateAnimation()
-
     }
 
     override fun onLoadImageSuccessful(bitmap: Bitmap) {
