@@ -2,8 +2,142 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:animateLayoutChanges="true"
+    android:clipChildren="false"
+    tools:context=".feature.login.LoginActivity">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/logoText"
+        style="@style/LogoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing32"
+        android:text="@string/app_name"
+        android:transitionName="@string/transition_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing32"
+        android:contentDescription="@null"
+        android:transitionName="@string/transition_logo"
+        app:layout_constraintDimensionRatio="H,2:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoText" />
+
+    <LinearLayout
+        android:id="@+id/welcomeLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/parentGoogleButtonView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage">
+
+        <TextView
+            style="@style/TextMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/welcome" />
+
+        <TextView
+            style="@style/TextSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing8"
+            android:gravity="center"
+            android:text="@string/body_login" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/termsLinear"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size50"
+        android:background="@drawable/circle_shape"
+        android:rotation="180"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            style="@style/TextSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:text="@string/terms"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/loadView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blueDark"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/parentGoogleButtonView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing48"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/termsLinear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeLinear">
+
+        <david.barbaran.mallwallet.component.CenterIconButton
+            android:id="@+id/googleSignInButton"
+            style="@style/ButtonGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size48"
+            android:layout_marginStart="@dimen/spacing36"
+            android:layout_marginEnd="@dimen/spacing36"
+            android:layout_marginBottom="@dimen/spacing20"
+            android:drawableStart="@drawable/ic_google_logo"
+            android:text="@string/sign_in_google" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/parentFacebookButtonView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parentGoogleButtonView">
+
+        <david.barbaran.mallwallet.component.CenterIconButton
+            android:id="@+id/facebookSignInButton"
+            style="@style/ButtonFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size48"
+            android:layout_marginStart="@dimen/spacing36"
+            android:layout_marginEnd="@dimen/spacing36"
+            android:layout_marginBottom="@dimen/spacing20"
+            android:drawableStart="@drawable/ic_facebook_logo"
+            android:text="@string/sign_in_facebook" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
