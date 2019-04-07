@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity(), LoginController.View {
     private fun initView() {
         googleSignInButton.setOnClickListener {
             loadView.visibility = View.VISIBLE
+            parentFacebookButtonView.visibility = View.INVISIBLE
             facebookSignInButton.visibility = View.INVISIBLE
             googleSignInButton.startAnimation {
                 moveViewToScreenCenter(windowManager, container, googleSignInButton) { shrinkAnimation(it) }

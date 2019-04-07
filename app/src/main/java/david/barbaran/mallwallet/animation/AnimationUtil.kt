@@ -20,7 +20,10 @@ fun moveViewToScreenCenter(windowManager: WindowManager, parentView: View, view:
     xDest -= view.measuredWidth / 2
     val yDest = dm.heightPixels / 2 - view.measuredHeight / 2 - statusBarOffset
 
-    val anim = TranslateAnimation(0f, (xDest - originalPos[0]).toFloat(), 0f, (yDest - originalPos[1]).toFloat())
+    val anim = TranslateAnimation(
+        0f, (xDest - originalPos[0]).toFloat(),
+        0f, (yDest - originalPos[1]).toFloat()
+    )
     anim.duration = 500
     anim.fillAfter = true
     anim.setAnimationListener(object : Animation.AnimationListener {
