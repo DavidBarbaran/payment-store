@@ -1,13 +1,16 @@
 package david.barbaran.mallwallet.feature.login
 
+import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import david.barbaran.mallwallet.R
 import david.barbaran.mallwallet.animation.BounceAnimation
-import david.barbaran.mallwallet.animation.moveViewToScreenCenter
-import david.barbaran.mallwallet.animation.shrinkAnimation
+import david.barbaran.mallwallet.animation.ShrinkAnimation
+import david.barbaran.mallwallet.feature.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -29,9 +32,21 @@ class LoginActivity : AppCompatActivity(), LoginController.View {
             parentFacebookButtonView.visibility = View.INVISIBLE
             facebookSignInButton.visibility = View.INVISIBLE
             googleSignInButton.startAnimation {
-                moveViewToScreenCenter(windowManager, container, googleSignInButton) { shrinkAnimation(it) }
+                ShrinkAnimation().Builder().view(googleSignInButton).repeatCount(7).onEnd {
+                    startHome()
+                }.build()
             }
         }
+    }
+
+    private fun startHome() {
+        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val p1 = Pair.create<View?, String?>(googleSignInButton as View, getString(R.string.transition_circle))
+        val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this@LoginActivity, p1
+        ).toBundle()
+        startActivity(intent, bundle)
     }
 
     override fun onEnterAnimationComplete() {

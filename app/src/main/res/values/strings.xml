@@ -3,4 +3,6 @@
 
     <string name="transition_logo">Transition Logo</string>
     <string name="transition_title">Transition Title</string>
+
+    <string name="transition_circle">Transition Circle</string>
 </resources>
