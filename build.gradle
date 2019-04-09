@@ -21,6 +21,11 @@ allprojects {
         jcenter()
         mavenCentral()
     }
+    ext {
+        androidCompileSdkVersion = 28
+        androidMinSdkVersion = 21
+        androidTargetSdkVersion = 28
+    }
 }
 
 task clean(type: Delete) {
