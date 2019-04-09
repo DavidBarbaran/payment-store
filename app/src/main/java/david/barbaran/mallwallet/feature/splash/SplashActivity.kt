@@ -32,14 +32,20 @@ class SplashActivity : AppCompatActivity(), SplashController.View, Animator.Anim
         lottieAnimationView.addAnimatorListener(this)
     }
 
-    override fun onLoadImageSuccessful(byteArray: ByteArray) {
+    override fun onStartLogin(byteArray: ByteArray) {
         val intent = Intent(this@SplashActivity, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.putExtra(KEY_IMAGE, byteArray)
-        val p1 = Pair.create<View?, String?>(logoImage as View, getString(R.string.transition_logo))
-        val p2 = Pair.create<View?, String?>(logoText as View, getString(R.string.transition_title))
-        val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-            this@SplashActivity, p1, p2
-        ).toBundle()
+        startActivity(intent)
+    }
+
+    override fun onStartLoginWithAnimation(byteArray: ByteArray) {
+        val intent = Intent(this@SplashActivity, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.putExtra(KEY_IMAGE, byteArray)
+        val p1 = Pair.create(logoImage as View, getString(R.string.transition_logo))
+        val p2 = Pair.create(logoText as View, getString(R.string.transition_title))
+        val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this@SplashActivity, p1, p2).toBundle()
         startActivity(intent, bundle)
     }
 

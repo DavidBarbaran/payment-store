@@ -1,6 +1,7 @@
 package david.barbaran.mallwallet.feature.splash
 
 import android.graphics.Bitmap
+import david.barbaran.mallwallet.app.MainApplication
 import java.io.ByteArrayOutputStream
 
 class SplashPresenter(private val controller: SplashController.View) : SplashController.Presenter {
@@ -9,6 +10,10 @@ class SplashPresenter(private val controller: SplashController.View) : SplashCon
         val stream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
         val arrayByteImage = stream.toByteArray()
-        controller.onLoadImageSuccessful(arrayByteImage)
+        if (MainApplication.isApplicationVisible) {
+            controller.onStartLoginWithAnimation(arrayByteImage)
+        } else {
+            controller.onStartLogin(arrayByteImage)
+        }
     }
 }

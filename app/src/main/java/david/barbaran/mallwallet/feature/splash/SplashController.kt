@@ -4,7 +4,8 @@ import android.graphics.Bitmap
 
 interface SplashController {
     interface View {
-        fun onLoadImageSuccessful(byteArray: ByteArray)
+        fun onStartLogin(byteArray: ByteArray)
+        fun onStartLoginWithAnimation(byteArray: ByteArray)
     }
 
     interface Presenter {

@@ -10,6 +10,7 @@ import androidx.core.util.Pair
 import david.barbaran.mallwallet.R
 import david.barbaran.mallwallet.animation.BounceAnimation
 import david.barbaran.mallwallet.animation.ShrinkAnimation
+import david.barbaran.mallwallet.app.MainApplication
 import david.barbaran.mallwallet.feature.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.inject
@@ -42,11 +43,15 @@ class LoginActivity : AppCompatActivity(), LoginController.View {
     private fun startHome() {
         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        val p1 = Pair.create<View?, String?>(googleSignInButton as View, getString(R.string.transition_circle))
-        val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-            this@LoginActivity, p1
-        ).toBundle()
-        startActivity(intent, bundle)
+        if (!MainApplication.isApplicationVisible) {
+            startActivity(intent)
+        } else {
+            val p1 = Pair.create<View?, String?>(googleSignInButton as View, getString(R.string.transition_circle))
+            val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this@LoginActivity, p1
+            ).toBundle()
+            startActivity(intent, bundle)
+        }
     }
 
     override fun onEnterAnimationComplete() {
@@ -66,5 +71,6 @@ class LoginActivity : AppCompatActivity(), LoginController.View {
 
     override fun onBackPressed() {
         finishAffinity()
+        System.exit(0)
     }
 }
