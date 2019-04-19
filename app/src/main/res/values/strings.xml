@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Mall Wallet</string>
+
+    <string name="transition_logo">Transition Logo</string>
+    <string name="transition_title">Transition Title</string>
+
+    <string name="transition_circle">Transition Circle</string>
+
+    <string name="update_ap_message">Esta version de la aplicación ya no encuentra disponible, actualize a la ultima versioo</string>
 </resources>
