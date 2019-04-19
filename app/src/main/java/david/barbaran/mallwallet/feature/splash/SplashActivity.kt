@@ -18,7 +18,7 @@ import org.koin.core.parameter.parametersOf
 
 class SplashActivity : AppCompatActivity(), SplashController.View, Animator.AnimatorListener {
 
-    private val presenter: SplashPresenter by inject { parametersOf(this) }
+    private val presenter: SplashController.Presenter by inject { parametersOf(this) }
 
     companion object {
         const val KEY_IMAGE = "key_image"
@@ -49,6 +49,10 @@ class SplashActivity : AppCompatActivity(), SplashController.View, Animator.Anim
         startActivity(intent, bundle)
     }
 
+    override fun onVersionAppIsSupported() {
+
+    }
+
     override fun onAnimationRepeat(animation: Animator?) {
     }
 
@@ -57,6 +61,7 @@ class SplashActivity : AppCompatActivity(), SplashController.View, Animator.Anim
         logoImage.setImageBitmap(bitmap)
         lottieAnimationView.visibility = View.INVISIBLE
         presenter.processImage(bitmap)
+        presenter.checkVersion()
     }
 
     override fun onAnimationCancel(animation: Animator?) {
